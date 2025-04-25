@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="header">
+    <h2>Proyectos</h2>
+    <button class="btn btn-primary" [routerLink]="['/projects/new']">
+      Nuevo Proyecto
+    </button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Fecha Inicio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.name }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ project.createdAt | date }}</td>
+        <td>
+          <div class="actions">
+            <button class="btn btn-sm btn-info" [routerLink]="['/projects', project.id]">
+              Editar
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteProject(project.id)">
+              Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="projects.length === 0">
+        <td colspan="5" class="text-center">No hay proyectos registrados</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
