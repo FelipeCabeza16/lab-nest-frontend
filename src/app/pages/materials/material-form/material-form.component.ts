@@ -13,7 +13,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './material-form.component.html',
-  styleUrls: ['./material-form.component.scss']
 })
 export class MaterialFormComponent implements OnInit {
   materialForm: FormGroup;

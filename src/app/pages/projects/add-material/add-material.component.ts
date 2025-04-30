@@ -10,7 +10,6 @@ import { ProjectService } from '../../../services/project';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './add-material.component.html',
-  styleUrls: ['./add-material.component.scss']
 })
 export class AddMaterialComponent implements OnInit {
   materials: Material[] = [];

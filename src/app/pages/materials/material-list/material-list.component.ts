@@ -8,7 +8,6 @@ import { Material, MaterialService } from '../../../services/material';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './material-list.component.html',
-  styleUrls: ['./material-list.component.scss']
 })
 export class MaterialListComponent implements OnInit {
   materials: Material[] = [];

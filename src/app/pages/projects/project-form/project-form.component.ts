@@ -11,7 +11,6 @@ import { MaterialService, Material } from '../../../services/material';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   templateUrl: './project-form.component.html',
-  styleUrls: ['./project-form.component.scss']
 })
 export class ProjectFormComponent implements OnInit {
   projectForm: FormGroup;
