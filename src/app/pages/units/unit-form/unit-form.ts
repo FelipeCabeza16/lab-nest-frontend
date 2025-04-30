@@ -41,8 +41,8 @@ export class UnitFormComponent implements OnInit {
   save() {
     if (this.form.invalid) return;
     const obs = this.isEdit
-      ? this.unitService.update(this.id!, { name: this.form.value.name! })
-      : this.unitService.create({ name: this.form.value.name! });
+      ? this.unitService.update(this.id!, { name: this.form.value.name!, symbol: this.form.value.symbol!, description: this.form.value.description! })
+      : this.unitService.create({ name: this.form.value.name!, symbol: this.form.value.symbol!, description: this.form.value.description! });
     obs.subscribe(() => this.router.navigate(['/units']));
   }
 }

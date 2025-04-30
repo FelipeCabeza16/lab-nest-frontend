@@ -23,5 +23,9 @@ export const routes: Routes = [
   { path: 'cities', component: CityListComponent },
   { path: 'cities/new', component: CityFormComponent },
   { path: 'cities/edit/:id', component: CityFormComponent },
+  {
+    path: 'projects/:id/add-material',
+    loadComponent: () => import('./pages/projects/add-material/add-material.component').then(m => m.AddMaterialComponent)
+  }
 
 ];

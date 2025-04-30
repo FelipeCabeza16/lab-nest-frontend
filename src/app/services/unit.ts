@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 export interface Unit {
   id?: number;
   name: string;
+  symbol: string;
+  description: string;
 }
 
 @Injectable({ providedIn: 'root' })

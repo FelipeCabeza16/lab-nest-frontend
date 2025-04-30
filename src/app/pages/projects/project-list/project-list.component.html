@@ -37,8 +37,8 @@
         <td>{{ project.createdAt | date }}</td>
         <td>
           <div class="actions">
-            <button class="btn btn-sm btn-info" [routerLink]="['/projects', project.id]">
-              Editar
+            <button class="btn btn-sm btn-info" [routerLink]="['/projects', project.id, 'add-material']">
+              Añadir Material
             </button>
             <button class="btn btn-sm btn-danger" (click)="deleteProject(project.id)">
               Eliminar
