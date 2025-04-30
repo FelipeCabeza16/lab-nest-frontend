@@ -1,3 +1,4 @@
+// material-form.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -5,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialService } from '../../../services/material';
 import { UnitService } from '../../../services/unit';
 import { Unit } from '../../../services/unit';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-material-form',
@@ -18,6 +20,7 @@ export class MaterialFormComponent implements OnInit {
   isEditMode = false;
   id?: string;
   units: Unit[] = [];
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +63,11 @@ export class MaterialFormComponent implements OnInit {
       ? this.materialService.update(this.id!, this.materialForm.value)
       : this.materialService.create(this.materialForm.value);
 
-    save$.subscribe(() => this.router.navigate(['/materials']));
+    save$.subscribe({
+      next: () => this.router.navigate(['/materials']),
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage = err?.error?.message || 'Ocurrió un error inesperado';
+      }
+    });
   }
 }
