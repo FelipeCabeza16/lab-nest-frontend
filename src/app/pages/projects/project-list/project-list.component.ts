@@ -19,6 +19,15 @@ export class ProjectListComponent implements OnInit {
     this.loadProjects();
   }
 
+  getProjectTotal(project: Project): number {
+    return project.projectMaterials?.reduce((total, pm) => {
+      const price = +pm.material.price || 0;
+      const quantity = +pm.quantity || 0;
+      return total + price * quantity;
+    }, 0) || 0;
+  }
+
+
   loadProjects(): void {
     this.projectService.getAll().subscribe({
       next: (data) => {

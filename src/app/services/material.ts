@@ -6,6 +6,7 @@ import { Unit } from './unit';
 export interface Material {
   id: string;
   code: string;
+  name: string;
   description: string;
   unitId: string;
   price: number;
@@ -16,6 +17,7 @@ export interface Material {
 
 export interface CreateMaterialDto {
   code: string;
+  name: string;
   description: string;
   unitId: string;
   price: number;
@@ -23,6 +25,7 @@ export interface CreateMaterialDto {
 
 export interface UpdateMaterialDto {
   code?: string;
+  name?: string;
   description?: string;
   unitId?: string;
   price?: number;

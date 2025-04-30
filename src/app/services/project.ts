@@ -6,11 +6,26 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  startDate: string;
-  endDate: string;
+  city?: {
+    id: string;
+    name: string;
+    stateId: string;
+  };
+  projectMaterials?: {
+    id: string;
+    quantity: number;
+    material: {
+      id: string;
+      name: string;
+      code: string;
+      description: string;
+      price: number;
+    };
+  }[];
   createdAt?: string;
   updatedAt?: string;
 }
+
 
 export interface CreateProjectDto {
   name: string;

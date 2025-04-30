@@ -28,6 +28,7 @@ export class MaterialFormComponent implements OnInit {
   ) {
     this.materialForm = this.fb.group({
       code: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       unitId: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(0)]]

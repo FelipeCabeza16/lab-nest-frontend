@@ -11,6 +11,9 @@
       <tr>
         <th>Nombre</th>
         <th>Descripción</th>
+        <th>Ciudad</th>
+        <th>Materiales</th>
+        <th>Total</th>
         <th>Fecha Inicio</th>
         <th>Acciones</th>
       </tr>
@@ -19,6 +22,18 @@
       <tr *ngFor="let project of projects">
         <td>{{ project.name }}</td>
         <td>{{ project.description }}</td>
+        <td>{{ project.city?.name || '-' }}</td>
+        <td>
+          <ol *ngIf="project.projectMaterials?.length; else noMaterials" style="padding-left: 1.25rem; margin: 0;">
+            <li *ngFor="let pm of project.projectMaterials">
+              {{ pm.material.name }} - {{ pm.quantity }} unidades
+            </li>
+          </ol>
+          <ng-template #noMaterials>
+            <em>Sin materiales</em>
+          </ng-template>
+        </td>
+        <td>{{ getProjectTotal(project) | currency }}</td>
         <td>{{ project.createdAt | date }}</td>
         <td>
           <div class="actions">
@@ -32,7 +47,7 @@
         </td>
       </tr>
       <tr *ngIf="projects.length === 0">
-        <td colspan="5" class="text-center">No hay proyectos registrados</td>
+        <td colspan="7" class="text-center">No hay proyectos registrados</td>
       </tr>
     </tbody>
   </table>
