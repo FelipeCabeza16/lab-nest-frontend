@@ -7,11 +7,12 @@ export interface Unit {
   name: string;
   symbol: string;
   description: string;
+  code: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class UnitService {
-  private api = '/api/units';
+  private api = 'http://localhost:3000/units';
 
   constructor(private http: HttpClient) {}
 

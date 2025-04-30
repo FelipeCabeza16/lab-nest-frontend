@@ -25,6 +25,9 @@ export class UnitFormComponent implements OnInit {
   ) {
     this.unitForm = this.fb.group({
       name: ['', Validators.required],
+      symbol: ['', Validators.required],
+      description: ['', Validators.required],
+      code: ['', Validators.required]
     });
   }
 
