@@ -17,7 +17,7 @@ export class AddMaterialComponent implements OnInit {
   selectedMaterialId = '';
   quantity = 0;
   projectId: string = '';
-
+  errorMessage: string = '';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,11 +38,22 @@ export class AddMaterialComponent implements OnInit {
   }
 
   save(): void {
-    if (!this.selectedMaterialId || this.quantity <= 0) return;
+    this.errorMessage = '';
+
+    if (!this.selectedMaterialId || this.quantity <= 0) {
+      this.errorMessage = 'Por favor seleccione un material y una cantidad válida.';
+      return;
+    }
 
     this.projectService.addMaterialToProject(this.projectId, {
       materialId: this.selectedMaterialId,
       quantity: this.quantity
-    }).subscribe(() => this.router.navigate(['/projects']));
+    }).subscribe({
+      next: () => this.router.navigate(['/projects']),
+      error: (error) => {
+        console.error('Error al guardar material:', error);
+        this.errorMessage = 'Hubo un error al guardar el material. Inténtalo de nuevo.';
+      }
+    });
   }
 }
