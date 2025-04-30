@@ -9,5 +9,5 @@ import { NavbarComponent } from './components/navbar/navbar';
   styleUrl: './app.css'
 })
 export class App {
-  title = 'idrd-materiales-frontend';
+  title = 'materiales-frontend';
 }
