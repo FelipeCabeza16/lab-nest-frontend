@@ -26,19 +26,16 @@ export interface Project {
   updatedAt?: string;
 }
 
-
 export interface CreateProjectDto {
   name: string;
   description: string;
-  startDate: string;
-  endDate: string;
+  cityId: string;
 }
 
 export interface UpdateProjectDto {
   name?: string;
   description?: string;
-  startDate?: string;
-  endDate?: string;
+  cityId?: string;
 }
 
 @Injectable({
@@ -67,5 +64,9 @@ export class ProjectService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  addMaterialToProject(projectId: string, data: { materialId: string; quantity: number }): Observable<Project> {
+    return this.http.post<Project>(`${this.apiUrl}/${projectId}/materials`, data);
   }
 }

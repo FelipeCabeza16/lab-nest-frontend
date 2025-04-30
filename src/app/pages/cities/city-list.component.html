@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Ciudades</h2>
+  <button class="btn btn-primary" [routerLink]="['/cities/new']">Nueva Ciudad</button>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities">
+        <td>{{ city.name }}</td>
+        <td>
+          <button class="btn btn-sm btn-info" [routerLink]="['/cities', city.id]">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCity(city.id)">Eliminar</button>
+        </td>
+      </tr>
+      <tr *ngIf="cities.length === 0">
+        <td colspan="2">No hay ciudades registradas</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

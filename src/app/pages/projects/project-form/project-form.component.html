@@ -1,0 +1,80 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Editar' : 'Nuevo' }} Proyecto</h2>
+
+  <form [formGroup]="projectForm" (ngSubmit)="save()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        [class.is-invalid]="projectForm.get('name')?.invalid && projectForm.get('name')?.touched"
+      >
+      <div class="invalid-feedback" *ngIf="projectForm.get('name')?.invalid && projectForm.get('name')?.touched">
+        El nombre es requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        [class.is-invalid]="projectForm.get('description')?.invalid && projectForm.get('description')?.touched"
+      ></textarea>
+      <div class="invalid-feedback" *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched">
+        La descripción es requerida
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cityId">Ciudad</label>
+      <select
+        id="cityId"
+        formControlName="cityId"
+        class="form-control"
+        [class.is-invalid]="projectForm.get('cityId')?.invalid && projectForm.get('cityId')?.touched"
+      >
+        <option value="">Seleccione una ciudad</option>
+        <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="projectForm.get('cityId')?.invalid && projectForm.get('cityId')?.touched">
+        La ciudad es requerida
+      </div>
+    </div>
+
+    <!-- Dropdown de materiales y cantidad -->
+    <div class="form-group">
+      <label for="material">Material</label>
+      <select id="material" [(ngModel)]="selectedMaterialId" name="material" class="form-control">
+        <option value="">Seleccione un material</option>
+        <option *ngFor="let material of materials" [value]="material.id">
+          {{ material.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="materialQuantity">Cantidad</label>
+      <input
+        type="number"
+        id="materialQuantity"
+        [(ngModel)]="materialQuantity"
+        name="materialQuantity"
+        class="form-control"
+        min="0"
+      >
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn btn-secondary" [routerLink]="['/projects']">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }}
+      </button>
+    </div>
+  </form>
+</div>

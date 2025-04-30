@@ -5,6 +5,9 @@ import { UnitFormComponent } from './pages/units/unit-form/unit-form.component';
 import { MaterialListComponent } from './pages/materials/material-list/material-list.component';
 import { MaterialFormComponent } from './pages/materials/material-form/material-form.component';
 import { ProjectListComponent } from './pages/projects/project-list/project-list.component';
+import { ProjectFormComponent } from './pages/projects/project-form/project-form.component';
+import { CityFormComponent } from './pages/cities/city-form.component';
+import { CityListComponent } from './pages/cities/city-list.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,4 +18,10 @@ export const routes: Routes = [
   { path: 'materials/new', component: MaterialFormComponent },
   { path: 'materials/edit/:id', component: MaterialFormComponent },
   { path: 'projects', component: ProjectListComponent },
+  { path: 'projects/new', component: ProjectFormComponent },
+  { path: 'projects/edit/:id', component: ProjectFormComponent },
+  { path: 'cities', component: CityListComponent },
+  { path: 'cities/new', component: CityFormComponent },
+  { path: 'cities/edit/:id', component: CityFormComponent },
+
 ];
